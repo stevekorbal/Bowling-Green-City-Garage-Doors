@@ -235,15 +235,15 @@ export default function BlogPostView({ slug, onNavigate }: BlogPostViewProps) {
               Have Questions or Need a Quick Estimate?
             </h3>
             <p className="text-blue-200 text-xs md:text-sm mt-1">
-              Call our licensed Bowling Green repair technicians directly at (423) 555-8240.
+              Call our licensed Bowling Green repair technicians directly at 364-201-8889.
             </p>
           </div>
           <a
-            href="tel:4235558240"
+            href="tel:3642018889"
             className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-3.5 px-6 rounded-xl text-xs md:text-sm tracking-wide transition-all border border-amber-600 shrink-0 shadow-md flex items-center gap-2 cursor-pointer"
           >
             <Phone className="w-4 h-4 fill-current" />
-            CALL (423) 555-8240
+            CALL 364-201-8889
           </a>
         </div>
 

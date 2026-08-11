@@ -67,4 +67,4 @@ Professional technicians use calibrated winding bars, winding cones, and vice gr
 
 At **Bowling Green Garage Door Repair**, we carry commercial-grade oil-tempered torsion and extension springs on all our service trucks. We offer same-day dispatch and upfront, transparent pricing across Bowling Green, Smiths Grove, Alvaton, Franklin, and surrounding communities.
 
-Call us today at **[(423) 555-8240](tel:4235558240)** or request a free estimate online!
+Call us today at **[364-201-8889](tel:3642018889)** or request a free estimate online!

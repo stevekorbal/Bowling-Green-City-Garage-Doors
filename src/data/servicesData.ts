@@ -176,7 +176,7 @@ export const servicesData: Record<string, ServicePage> = {
       'Modern smart-home features',
       'Smooth opening and closing'
     ],
-    whenReplacementIsBetter: 'Contact us today to learn more about garage door opener installation in Bowling Green, KY. Call (423) 555-8240.',
+    whenReplacementIsBetter: 'Contact us today to learn more about garage door opener installation in Bowling Green, KY. Call 364-201-8889.',
     stepByStepProcess: [
       'Step 1: Style & Power Selection - Helping you choose between quiet belt-drive or high-power chain-drive models.',
       'Step 2: Old Motor Removal - Safely disconnecting, unmounting, and hauling away the old motor.',

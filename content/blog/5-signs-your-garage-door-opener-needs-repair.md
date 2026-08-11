@@ -60,4 +60,4 @@ If you press your remote and hear the motor humming inside the ceiling unit, but
 
 If your garage door opener is showing any of these symptoms, don't wait for total breakdown. **Bowling Green Garage Door Repair** services all major brands including LiftMaster, Chamberlain, Genie, and Craftsman across Bowling Green and Warren County.
 
-Contact our Bowling Green technicians today at **[(423) 555-8240](tel:4235558240)** for fast diagnostic and repair services!
+Contact our Bowling Green technicians today at **[364-201-8889](tel:3642018889)** for fast diagnostic and repair services!

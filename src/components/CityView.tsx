@@ -183,11 +183,11 @@ export default function CityView({ cityId, onNavigate }: CityViewProps) {
                 Call our direct routing number to check technician availability or request emergency roadside assistance immediately.
               </p>
               <a
-                href="tel:4235558240"
+                href="tel:3642018889"
                 className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-3 px-6 rounded-xl text-sm tracking-widest transition-all flex items-center justify-center gap-2 border border-amber-600"
               >
                 <PhoneCall className="w-4 h-4 fill-current" />
-                (423) 555-8240
+                364-201-8889
               </a>
             </div>
 

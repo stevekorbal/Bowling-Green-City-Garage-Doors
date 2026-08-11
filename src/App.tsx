@@ -126,7 +126,7 @@ export default function App() {
         'provider': {
           '@type': 'LocalBusiness',
           'name': 'Bowling Green Garage Door Repair',
-          'telephone': '+14235558240',
+          'telephone': '+13642018889',
           'priceRange': '$$',
           'image': `${baseDomain}/src/assets/images/garage_door_hero_1784628372796.jpg`,
           'address': {
@@ -180,7 +180,7 @@ export default function App() {
           '@type': 'LocalBusiness',
           'name': `Bowling Green Garage Door Repair - ${city.cityName}`,
           'description': city.intro,
-          'telephone': '+14235558240',
+          'telephone': '+13642018889',
           'priceRange': '$$',
           'url': canonicalUrl,
           'address': {
@@ -252,7 +252,7 @@ export default function App() {
           break;
         case 'contact':
           title = 'Contact Us | Bowling Green Garage Door Repair KY';
-          description = 'Get in touch with our local team for emergency repairs or free estimates in Bowling Green, KY. We\'re available 24/7 at (423) 555-8240.';
+          description = 'Get in touch with our local team for emergency repairs or free estimates in Bowling Green, KY. We\'re available 24/7 at 364-201-8889.';
           break;
         case 'privacy-policy':
           title = 'Privacy Policy | Bowling Green Garage Door Repair';
@@ -276,7 +276,7 @@ export default function App() {
         'image': `${baseDomain}/src/assets/images/garage_door_hero_1784628372796.jpg`,
         '@id': `${baseDomain}/`,
         'url': `${baseDomain}/`,
-        'telephone': '+14235558240',
+        'telephone': '+13642018889',
         'priceRange': '$$',
         'address': {
           '@type': 'PostalAddress',
