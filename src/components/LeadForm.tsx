@@ -16,7 +16,8 @@ export default function LeadForm({ sourcePage = 'General Website', className = '
     city: '',
     serviceNeeded: '',
     message: '',
-    agreedToTerms: true
+    agreedToTerms: true,
+    _hp: ''
   });
 
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -32,22 +33,74 @@ export default function LeadForm({ sourcePage = 'General Website', className = '
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone || !formData.serviceNeeded || !formData.city) {
+
+    // Prevent duplicate submissions
+    if (status === 'submitting') {
+      return;
+    }
+
+    const trimmedName = formData.name.trim();
+    const trimmedPhone = formData.phone.trim();
+    const trimmedCity = formData.city.trim();
+    const trimmedService = formData.serviceNeeded.trim();
+
+    if (!trimmedName || !trimmedPhone || !trimmedCity || !trimmedService) {
       setStatus('error');
       setErrorMessage('Please fill in all required fields (Name, Phone, City, Service).');
       return;
     }
 
     setStatus('submitting');
-    
-    // Simulate API call to express backend /api/contact or similar
-    setTimeout(() => {
-      setStatus('success');
-      // Console log for telemetry/debugging
-      console.log('Lead submitted successfully from:', sourcePage, formData);
-    }, 1200);
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: trimmedName,
+          phone: trimmedPhone,
+          email: formData.email.trim(),
+          city: trimmedCity,
+          service: trimmedService,
+          message: formData.message.trim(),
+          _hp: formData._hp,
+          sourcePage
+        })
+      });
+
+      // Defensive checking of Content-Type before parsing JSON
+      const contentType = response.headers.get('content-type') || '';
+      let data: any = null;
+
+      if (contentType.includes('application/json')) {
+        try {
+          data = await response.json();
+        } catch (jsonErr) {
+          console.error('[Form Submit] JSON parse error:', jsonErr);
+        }
+      } else {
+        const rawText = await response.text();
+        console.warn('[Form Submit] Non-JSON response received:', rawText);
+      }
+
+      if (response.ok && data && data.success) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+        const fallbackMsg = "Sorry, we couldn't send your request. Please call us directly.";
+        setErrorMessage(data?.error || fallbackMsg);
+      }
+    } catch (networkErr) {
+      console.error('[Form Submit] Network or fetch error:', networkErr);
+      setStatus('error');
+      setErrorMessage("Sorry, we couldn't send your request. Please call us directly.");
+    }
   };
 
   if (status === 'success') {
@@ -57,7 +110,7 @@ export default function LeadForm({ sourcePage = 'General Website', className = '
           <CheckCircle className="w-10 h-10" />
         </div>
         <h3 className="text-emerald-950 font-extrabold text-xl md:text-2xl tracking-tight">
-          Request Received Successfully!
+          Thank you. Your request has been received. We'll be in touch shortly.
         </h3>
         <p className="text-emerald-800 text-sm mt-3 leading-relaxed">
           Thank you, <strong>{formData.name}</strong>. Our local Bowling Green service coordinator has received your request for <strong>{formData.serviceNeeded}</strong>.
@@ -95,6 +148,20 @@ export default function LeadForm({ sourcePage = 'General Website', className = '
             <span>{errorMessage}</span>
           </div>
         )}
+
+        {/* Hidden Honeypot for spam bots */}
+        <div className="hidden" aria-hidden="true" tabIndex={-1}>
+          <label htmlFor="form-website-hp">Leave this field blank</label>
+          <input
+            id="form-website-hp"
+            type="text"
+            name="_hp"
+            tabIndex={-1}
+            autoComplete="off"
+            value={formData._hp}
+            onChange={handleChange}
+          />
+        </div>
 
         {/* Name Field */}
         <div>
@@ -226,7 +293,7 @@ export default function LeadForm({ sourcePage = 'General Website', className = '
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-slate-300 text-slate-950 font-black py-3 px-6 rounded-xl text-sm tracking-wider transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer border border-amber-600 mt-2 hover:shadow-lg active:scale-95 transform"
+          className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-slate-400 disabled:cursor-not-allowed text-slate-950 font-black py-3 px-6 rounded-xl text-sm tracking-wider transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer border border-amber-600 mt-2 hover:shadow-lg active:scale-95 transform"
         >
           {status === 'submitting' ? (
             <>
